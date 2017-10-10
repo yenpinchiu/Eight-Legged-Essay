@@ -25,3 +25,26 @@ class Solution(object):
             viewd_dic.update({nums[i]: i})
 
         return None; # exactly one solution
+
+    def twoSum2(self, nums, target):
+        
+        nums_with_index = []
+        for i, k in enumerate(nums):
+            nums_with_index.append([k, i])
+
+        nums_with_index.sort(key = lambda x : x[0])
+        sorted_nums_with_index = nums_with_index
+
+        head = 0
+        tail = len(nums) - 1
+
+        while head != tail:
+            if sorted_nums_with_index[head][0] + sorted_nums_with_index[tail][0] == target:
+
+                return [sorted_nums_with_index[head][1], sorted_nums_with_index[tail][1]]
+            elif sorted_nums_with_index[head][0] + sorted_nums_with_index[tail][0] > target:
+                tail -= 1
+            elif sorted_nums_with_index[head][0] + sorted_nums_with_index[tail][0] < target:
+                head += 1
+
+        return None; # exactly one solution
