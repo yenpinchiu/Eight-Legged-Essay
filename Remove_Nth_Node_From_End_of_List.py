@@ -13,10 +13,10 @@ Try to do this in one pass.
 '''
 
 # Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+class ListNode(object):
+     def __init__(self, x, next_node):
+         self.val = x
+         self.next = next_node
 
 class Solution(object):
     def removeNthFromEnd(self, head, n):
@@ -25,5 +25,41 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
-
+        cur_node = head
+        index = 1
+        node_dict = {index:head}
         
+        while cur_node.next != None:
+            cur_node = cur_node.next
+            index += 1
+            node_dict.update({index:cur_node})
+
+        if index - n + 2 not in node_dict:
+            r_node = None
+        else:
+            r_node = node_dict[index - n + 2]
+
+        if index - n in node_dict:
+            l_node = node_dict[index - n]
+        else:
+            l_node = None
+
+        if r_node is not None and l_node is not None:
+            l_node.next = r_node
+            return head
+        elif r_node is not None and l_node is None:
+            return r_node
+        elif r_node is None and l_node is not None:
+            l_node.next = None
+            return head
+        else:
+            return None
+
+    def printList(self, head):
+        cur_node = head
+        result = ""
+        while cur_node != None:
+            result += str(cur_node.val) + " -> "
+            cur_node = cur_node.next
+
+        return result
