@@ -1,14 +1,6 @@
-import Remove_Nth_Node_From_End_of_List as remove_node
+import Unique_Binary_Search_Trees
 
 if __name__ == '__main__':
-    n5 = remove_node.ListNode(5, None)
-    n4 = remove_node.ListNode(4, n5)
-    n3 = remove_node.ListNode(3, n4)
-    n2 = remove_node.ListNode(2, n3)
-    n1 = remove_node.ListNode(1, n2)
-    head = n1
-
-    s = remove_node.Solution()
-    head = s.removeNthFromEnd(head, 2)
-    print(s.printList(head))
+    s = Unique_Binary_Search_Trees.Solution()
+    print(s.numTrees(3))
 
