@@ -1,3 +1,5 @@
+#if an array can be sorted by one swap or less
+
 class Solution(object):
     def isSingleSwapSorted(self, num_list):
         sorted_num_list = sorted(num_list)

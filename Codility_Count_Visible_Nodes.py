@@ -1,3 +1,5 @@
+# number of visible nodes in a binary tree
+
 class Solution(object):
     def CountVisibleNodes(self, root):
         return self.scan_nodes(root, root.x)

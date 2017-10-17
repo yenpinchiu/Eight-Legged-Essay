@@ -1,3 +1,5 @@
+# number of whole square number within a range
+
 import math
 
 class Solution(object):
