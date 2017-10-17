@@ -25,3 +25,7 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: float
         """
+
+if __name__ == "__main__":
+    s = Solution()
+    print(s.findMedianSortedArrays([1, 2], [3, 4]))
