@@ -1,5 +1,18 @@
 class Solution(object):
-    def isSingleSwapSorted(self, nums):
+    def isSingleSwapSorted(self, num_list):
+        sorted_num_list = sorted(num_list)
+        
+        diff_count = 0
+        for i in range(0, len(num_list)):
+            if sorted_num_list[i] != num_list[i]:
+                diff_count += 1
+
+        if diff_count > 2:
+            return False
+
+        return True
+
+    def isSingleSwapSorted2(self, nums):
         for i in range(0, len(nums)):
             if i + 1 < len(nums) and nums[i + 1] < nums[i]:
                 for j in range(i + 1, len(nums)):
