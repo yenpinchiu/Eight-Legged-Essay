@@ -7,18 +7,22 @@ def solution(A, P):
 
     for ci in xrange(0, len(A)):
         handIntervals = handIntervalList(sorted(A[ci]), P)
-        if str(handIntervals) in clock_dict:
-            for ci2 in clock_dict[str(handIntervals)]:
+        handIntervalsStr = str(handIntervals)
+        if handIntervalsStr in clock_dict:
+            for ci2 in clock_dict[handIntervalsStr]:
                 pair_list.append([ci2, ci])
         
-        for ri in xrange(0, len(A[0])):
-            handIntervalsRotated = handIntervals[ri:len(handIntervals)]
-            handIntervalsRotated.extend(handIntervals[0:ri])
-
-            if str(handIntervalsRotated) not in clock_dict:
-                clock_dict.update({str(handIntervalsRotated):set()})
-
-            clock_dict[str(handIntervalsRotated)].add(ci)
+            clock_dict[handIntervalsStr].add(ci)
+        else:
+            clock_dict.update({handIntervalsStr:set()})
+            same_clock_set = clock_dict[handIntervalsStr]
+            same_clock_set.add(ci)
+            for ri in xrange(0, len(A[0])):
+                handIntervalsRotated = handIntervals[ri:len(handIntervals)]
+                handIntervalsRotated.extend(handIntervals[0:ri])
+                handIntervalsRotatedStr = str(handIntervalsRotated)
+                if handIntervalsRotatedStr not in clock_dict:
+                    clock_dict.update({handIntervalsRotatedStr:same_clock_set})
 
     return len(pair_list)
             
