@@ -19,8 +19,8 @@ def MaximunSubarray(A):
     for i in range(0, len(A)):
         # 計算停在此的sub array中合最大者的合
         # 不需要max(0, local_max + i, i),因為local_max最小值是0,所以local_max + i一定 >= i
-        # 如果0贏了,表示A[i - j] + A[i - j + 1] + .... + A[i]不管j取多少都是負的,且A[i]本身一定也是負的,不如空集合
-        # 如果local_max + A[i]贏了,且local_max = 0,表示A[i - j] + A[i - j + 1] + .... + A[i - 1]不管j取多少都是負的,只有A[i]是最好的,且A[i]為正
+        # 如果0贏了,表示A[i - j] + A[i - j + 1] + .... + A[i]不管j取多少都是負的,不如空集合
+        # 如果local_max + A[i]贏了,且local_max = 0,表示A[i - j] + A[i - j + 1] + .... + A[i - 1]不管j取多少都是負的,而A[i]為正,所以只包含A[i]是最好的
         # 如果local_max + A[i]贏了,且local_max != 0,A[i-1]為尾的最大者+A[i]是最好的
         # A[i] = 0的情況很trival,不特別討論
         local_max = max(0, local_max + A[i]) 
